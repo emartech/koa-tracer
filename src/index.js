@@ -7,11 +7,20 @@ let tracer = new Tracer(tracerSession);
 
 module.exports = function GetTracerMiddleware() {
   return function*(next) {
-    tracer.initRequest(this);
+    let context = tracerSession.createContext();
+    tracerSession.enter(context);
+
+    tracer.checkNamespaceOverrun();
+    tracer.setRequestId(this);
+    tracer.startTracing('request');
+
     yield next;
-    tracer.requestEnd();
+
+    tracer.endTracing('request');
+    tracerSession.exit(context);
   };
 };
+
 
 module.exports.tracer = tracer;
 module.exports.startTracing = tracer.startTracing.bind(tracer);
