@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/emartech/koa-tracer/issues"
   },
-  "homepage": "https://github.com/emartech/koa-tracer#readme"
+  "homepage": "https://github.com/emartech/koa-tracer#readme",
+  "dependencies": {
+    "lodash": "3.10.1",
+    "logentries-logformat": "0.1.4",
+    "microtime": "2.0.0"
+  },
+  "devDependencies": {
+    "koa": "^1.1.2",
+    "koa-router": "^5.3.0"
+  }
 }
