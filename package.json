@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/emartech/koa-tracer#readme",
   "dependencies": {
+    "continuation-local-storage": "3.1.4",
     "lodash": "3.10.1",
     "logentries-logformat": "0.1.4",
     "microtime": "2.0.0"

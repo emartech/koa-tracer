@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./src/tracer');
+module.exports = require('./src');
