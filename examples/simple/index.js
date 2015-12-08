@@ -8,6 +8,7 @@ let slowComputation = require('../slow-computation');
 app.use(tracer());
 
 app.use(function *() {
+  tracer.log('test-event', { event_id: 'test' });
 
   tracer.startTracing('read-file');
   yield slowComputation();

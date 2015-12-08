@@ -22,6 +22,7 @@ module.exports = function GetTracerMiddleware() {
 
 
 module.exports.tracer = tracer;
+module.exports.log = tracer.log.bind(tracer);
 module.exports.startTracing = tracer.startTracing.bind(tracer);
 module.exports.endTracing = tracer.endTracing.bind(tracer);
 module.exports.getRequestId = tracer.getRequestId.bind(tracer);
