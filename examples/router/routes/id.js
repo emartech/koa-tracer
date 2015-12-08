@@ -1,6 +1,6 @@
 'use strict';
 
-let tracer = require('../../index');
+let tracer = require('../../../index');
 let logger = require('logentries-logformat')('tracer');
 
 

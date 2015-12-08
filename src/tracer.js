@@ -4,7 +4,6 @@ let _ = require('lodash');
 let microtime = require('microtime');
 let logger = require('logentries-logformat')('tracer');
 
-const TRACER_SESSION_ALERT_THRESHOLD = parseFloat(process.env.TRACER_SESSION_ALERT_THRESHOLD) || 2000;
 
 class Tracer {
 
@@ -42,14 +41,6 @@ class Tracer {
   setRequestId(koaContext) {
     let headers = _.get(koaContext, 'request.header', {});
     this._session.set('requestId', headers['request-id'] || headers['x-request-id'] || '');
-  }
-
-
-  checkNamespaceOverrun() {
-    let namespaceCount = _.get(process, 'namespaces.redirector._set', []).length;
-    if (namespaceCount > TRACER_SESSION_ALERT_THRESHOLD) {
-      logger.error('namespace-overrun', 'Too much active trace namespaces, possible memory leak', { amount: namespaceCount });
-    }
   }
 
 

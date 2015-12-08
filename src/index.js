@@ -1,6 +1,6 @@
 'use strict';
 
-let tracerSession = require('continuation-local-storage').createNamespace('koa-tracer');
+let tracerSession = require('continuation-local-storage').createNamespace('koaTracer');
 let Tracer = require('./tracer');
 
 let tracer = new Tracer(tracerSession);
@@ -10,7 +10,6 @@ module.exports = function GetTracerMiddleware() {
     let context = tracerSession.createContext();
     tracerSession.enter(context);
 
-    tracer.checkNamespaceOverrun();
     tracer.setRequestId(this);
     tracer.startTracing('request');
 

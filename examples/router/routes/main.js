@@ -1,7 +1,7 @@
 'use strict';
 
-let tracer = require('../../index');
-let slowComputation = require('../slow-computation');
+let tracer = require('../../../index');
+let slowComputation = require('../../slow-computation');
 
 module.exports = function* () {
 
