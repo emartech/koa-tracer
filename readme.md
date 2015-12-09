@@ -37,7 +37,7 @@ app.use(function *() {
 ```
 
 ## Request id fetching
-The library search for the `x-request-id` and the `request-id` headers to get the request ids. Because of this, it's compatible with most of the existing PaaS providers.
+The library searches for the `x-request-id` and the `request-id` headers to get the request ids. Because of this, it's compatible with most of the existing PaaS providers.
 
 ## Tracer functions
 
