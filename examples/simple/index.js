@@ -10,9 +10,9 @@ app.use(tracer());
 app.use(function *() {
   tracer.log('test-event', { event_id: 'test' });
 
-  tracer.startTracing('read-file');
+  tracer.startTracing('slow-computation');
   yield slowComputation();
-  tracer.endTracing('read-file');
+  tracer.endTracing('slow-computation');
 
   this.body = 'Hello simple world!';
 });

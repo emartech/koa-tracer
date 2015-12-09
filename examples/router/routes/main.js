@@ -5,9 +5,9 @@ let slowComputation = require('../../slow-computation');
 
 module.exports = function* () {
 
-  tracer.startTracing('read-file');
+  tracer.startTracing('slow-computation');
   yield slowComputation();
-  tracer.endTracing('read-file');
+  tracer.endTracing('slow-computation');
 
   this.body = 'Hello router world!';
 };
