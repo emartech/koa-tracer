@@ -1,6 +1,6 @@
 #Koa tracer middleware
 
-This is a small Koa middleware to easily create tracing logs and performance profiles of your code. The tracing mechanism is based on async-listener API so that you can require the tracer library anywhere in your code, it will be "magically" attached to the actual Koa request.
+This is a small Koa middleware to easily create tracing logs and performance profiles of your code. The tracing mechanism is based on async-listener API so that you can require the tracer library anywhere in your code, it will be "magically" attached to the actual Koa request and log the request id for all it's log entries.
 
 ```bash
 npm install --save koa-tracer
@@ -36,22 +36,38 @@ app.use(function *() {
 });
 ```
 
+## Request id fetching
+The library search for the `x-request-id` and the `request-id` headers to get the request ids. Because of this, it's compatible with most of the existing PaaS providers.
+
 ## Tracer functions
 
 ### Log
-Simply log an event and a flat json data.
+Simply log an event and a flat json data. The actual request id will be attached to the logs.
 
 ```javascript
 tracer.log('test-event', { event_id: 'test' });
 ```
 
+Logs in the console:
+
+```
+tracer type="tracer" event="test-event" event_id="test" request_id="124"
+```
+
 ### startTracing, endTracing
-You have to provide a tracing id as strings for these functions. The start and the end of the tracing will be logged with the duration in msec.
+You have to provide a tracing id as strings for these functions. The start and the end of the tracing will be logged with the duration in msec. The actual request id will be attached to the logs.
  
 ```javascript
 tracer.startTracing('slow-computation');
 yield someSlowComputation();
 tracer.endTracing('slow-computation');
+```
+
+Logs in the console:
+
+```
+tracer type="tracer" event="slow-computation" status="start" request_id="124"
+tracer type="tracer" event="slow-computation" status="end" duration="54ms" request_id="124"
 ```
 
 ### getRequestId
