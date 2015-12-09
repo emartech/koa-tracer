@@ -20,7 +20,7 @@ app.listen(3000);
 ## Usage
 After adding the tracer middleware, you can require and use the tracer library functions anywhere in your code if it's in the call stack of a request.
 
-*To see the tracer log-entries you have to set the `DEBUG=tracer` environment variable!* 
+**To see the tracer log-entries you have to set the `DEBUG=tracer` environment variable!** 
 
 ```javascript
 let tracer = require('koa-tracer');
